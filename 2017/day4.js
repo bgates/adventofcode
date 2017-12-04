@@ -1,33 +1,29 @@
 const wrap = require('./wrap')
 
-const code = data => {
-  const lines = data.split("\n")
-  const valid = lines.filter(line => {
-    const words = line.split(/\s+/)
-    return words.every((word, i) => {
-      return words.every((otherWord, j) => {
-        return j === i || word !== otherWord
-      })
-    })
-  })
-  console.log(valid.length)
-}
-const test = `aa bb cc dd ee
-aa bb cc dd aa
-aa bb cc dd aaa`
-wrap('day4', code)
-//console.log(code(test))
+const noWordMatch = (word, i, words) => (
+  words.every((otherWord, j) => (
+    j === i || word !== otherWord
+  ))
+)
 
-const part2 = data => {
-  const lines = data.split("\n").filter(line => line.length)
-  const valid = lines.filter(line => {
-    const words = line.split(/\s+/)
-    return words.every((word, i) => {
-      return words.every((otherWord, j) => {
-        return j === i || word.split('').sort().join('') !== otherWord.split('').sort().join('')
-      })
-    })
-  })
+const validIf = (data, validation) => {
+  const valid = data
+    .split("\n")
+    .filter(line => line.length)
+    .filter(line => line.split(/\s+/).every(validation))
   console.log(valid.length)
 }
+
+const part1 = data => validIf(data, noWordMatch)
+wrap('day4', part1)
+
+const alphabetized = word => word.split('').sort().join('') 
+
+const noAnagrams = (word, i, words) => (
+  words.every((otherWord, j) => (
+    j === i || alphabetized(word) !== alphabetized(otherWord)
+  ))
+)
+
+const part2 = data => validIf(data, noAnagrams)
 wrap('day4', part2)
