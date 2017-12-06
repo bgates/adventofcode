@@ -2,37 +2,39 @@ const input = '0	5	10	0	11	14	13	4	11	8	8	7	1	4	12	11'
 
 const test = '0 2 7 0'
 
-const part1 = data => {
+const nextIndex = (i, arr) => i === arr.length - 1 ? 0 : i + 1 
+
+const code = (data, breakWithoutRepeat = true) => {
   const arr = data.split(/\s+/).map(Number)
-  let seen = { [arr.join(',')]: true }
+  let seen = { [arr]: true }
   let count = 0
-  let repeat
+  let foundRepeat
   while (true) {
-    if (repeat !== undefined) {
-      repeat++
-    }
     let max = Math.max(...arr)
     const index = arr.indexOf(max)
     arr[index] = 0
-    let next = index === arr.length - 1 ? 0 : index + 1
+    let next = nextIndex(index, arr)
     while (max > 0) {
       arr[next]++
       max--
-      next = next === arr.length - 1 ? 0 : next + 1
+      next = nextIndex(next, arr)
     }
     count++
-    if (seen[arr.join(',')]) {
-      //break
-      if (repeat) {
+    if (seen[arr]) {
+      if (foundRepeat || breakWithoutRepeat) {
         break
       } else {
-        repeat = 0
-        seen = { [arr.join(',')]: true }
+        foundRepeat = true
+        seen = {}
+        count = 0
       }
     }
-    seen[arr.join(',')] = true
+    seen[arr] = true
   }
-  console.log(count, repeat)
+  return count
 }
-part1(test)
-part1(input)
+const log = console.log
+log(code(test))
+log(code(input))
+log(code(test, false)) // part2
+log(code(input, false))
