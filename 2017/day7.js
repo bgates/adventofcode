@@ -5,8 +5,7 @@ const code = (data) => {
   let names = []
   let supported = []
   lines.forEach(line => {
-    let name = line.match(/(\w+)/)[1]
-    names.push(name)
+    names.push(line.match(/(\w+)/)[1])
     if (line.match('->')) {
       let supports = line.split('-> ')[1].split(', ')
       supported = [...supported, ...supports]
@@ -19,47 +18,48 @@ const code = (data) => {
 
 wrap('day7', code)
 
-const supporting = (weights, supports, name) => {
-  return weights[name] + (supports[name] || []).reduce((total, other) => (
-    total + supporting(weights, supports, other)
-  ), 0)
-}
 
 const part2 = data => {
   const start = code(data)
   const lines = data.split("\n").filter(n => n.length)
   let weights = {}
-  let supports = {}
+  let supportedBy = {}
   lines.forEach(line => {
     let name = line.match(/(\w+)/)[1]
     weight = Number(line.match(/(\d+)/)[1])
     weights[name] = weight
     if (line.match('->')) {
-      supports[name] = line.split('-> ')[1].split(', ') 
+      supportedBy[name] = line.split('-> ')[1].split(', ') 
+    } else {
+      supportedBy[name] = []
     }
   })
-  var wrongWeight
+  var imbalanced, parent
   var supporter = start
-  while (supporter && !wrongWeight) {
-    let siblings = supports[supporter]
-    if (!supports[supporter]) {
-      wrongWeight = supporter
+  const supporting = name => {
+    return weights[name] + supportedBy[name].reduce((total, other) => (
+      total + supporting(other)
+    ), 0)
+  }
+  while (supporter && !imbalanced) {
+    let siblings = supportedBy[supporter]
+    if (supportedBy[supporter].length == 0) {
+      imbalanced = supporter
     } else {
-      let sibWeight = siblings.map(sib => supporting(weights, supports, sib))
-      let nextSupporter = siblings[sibWeight.indexOf(sibWeight.find(weight => weight !== sibWeight.reduce((total, n) => total + n, 0) / sibWeight.length))]
+      let sibWeight = siblings.map(supporting)
+      let avgWeight = sibWeight.reduce((total, n) => total + n, 0) /
+        sibWeight.length
+      let nonAvgSib = sibWeight.find(weight => weight !== avgWeight)
+      let nextSupporter = siblings[sibWeight.indexOf(nonAvgSib)]
       if (!nextSupporter) {
-        wrongWeight = supporter
+        imbalanced = supporter
       } else {
+        parent = supporter
         supporter = nextSupporter
       }
     }
-
   }
-  let parent = Object.keys(supports).find(name => supports[name].includes(wrongWeight))
-  let rightWeight = supports[parent].find(name => name !== wrongWeight)
-  let right = supporting(weights, supports, rightWeight)
-  let wrong = supporting(weights, supports, wrongWeight)
-  console.log(right - wrong - weights[wrongWeight])
-  console.log(right , wrong , weights[wrongWeight])
+  const balanced = (supporting(parent) - weights[parent] - supporting(imbalanced)) / (supportedBy[parent].length - 1)
+  console.log(weights[imbalanced] - supporting(imbalanced) + balanced)
 }
 wrap('day7', part2)
