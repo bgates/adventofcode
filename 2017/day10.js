@@ -15,28 +15,27 @@ for (let i = 0; i < max; i++) list.push(i)
 let currentPosition = 0
 const loop = (lengths, list) => {
   let arr
-  for(let i = 0; i < lengths.length; i++) {
-    let length = lengths[i]
+  for (let i = 0; i < lengths.length; i++) {
+    const length = lengths[i]
     if ( length > 1 ) {
       if (currentPosition + length <= list.length) {
         arr = list.slice(currentPosition, currentPosition + length).reverse()
-        list = [ ...list.slice(0, currentPosition), 
-          ...arr,
-         ...list.slice(currentPosition + length) ]
+        list = [ 
+          ...list.slice(0, currentPosition), 
+          ...arr, 
+          ...list.slice(currentPosition + length) ]
       } else {
-        arr = [...list.slice(currentPosition), 
+        arr = [
+          ...list.slice(currentPosition), 
           ...list.slice(0, currentPosition + length - list.length)]
         arr = arr.reverse()
-        let endCount = list.length - currentPosition
-        let startCount = arr.length - endCount
-        list = [ ...arr.slice(-startCount) ,
+        const endCount = list.length - currentPosition
+        const startCount = arr.length - endCount
+        list = [ 
+          ...arr.slice(-startCount),
           ...list.filter(n => !arr.includes(n)), 
           ...arr.slice(0, endCount)]
       }
-    }
-    if (list.length !== 256) {
-      console.log({ i, currentPosition, length })
-
     }
     currentPosition = (currentPosition + length + skipSize) % list.length
     skipSize++
@@ -45,20 +44,17 @@ const loop = (lengths, list) => {
 }
 list = loop(input, list)
 console.log(list[0] * list[1])
+
 const lengths = text.split('').map(c => c.charCodeAt(0)).concat(17, 31, 73, 47, 23)
 list = []
 for (let i = 0; i < max; i++) list.push(i)
 currentPosition = 0
 skipSize = 0
-for(let n = 0; n < 64; n++) {
- list = loop(lengths, list)
-}
-console.log(list.length)
-console.log(list.filter(n => list.indexOf(n) !== list.lastIndexOf(n)))
+
+for(let n = 0; n < 64; n++) list = loop(lengths, list)
+
 let dense = []
 while (list.length) {
   dense.push(list.splice(0, 16).reduce((total, n) => total ^ n))
 }
-console.log(dense)
-console.log(dense.length)
 console.log(dense.map(d => d.toString(16).padStart(2, '0')).join(''))
