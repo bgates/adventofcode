@@ -1,4 +1,5 @@
-let input = require('./input/day7')
+const fs = require('fs')
+const input = fs.readFileSync('./input/day1.txt', 'utf8').trim().split("\n")
 
 let innerRegex = /\[(.*?)\]/g
 let outerRegex = /\[.*?\]/

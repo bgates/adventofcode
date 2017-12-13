@@ -12,11 +12,11 @@ while password.length < 8
 end
 puts password
 
-password = []
+password = Array.new(8)
 i = 0
 while password.find_all{|c| c}.length < 8
   hash = Digest::MD5.hexdigest "#{input}#{i}"
-  if hash.start_with?("00000") && (0..7).map(&:to_s).include?(hash[5])
+  if hash.start_with?("00000") && (0..7).map(&:to_s).include?(hash[5]) && !password[hash[5].to_i]
     password[hash[5].to_i] = hash[6]
   end
   puts password.map{|c| c || '_'}.join
