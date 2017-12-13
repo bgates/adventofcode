@@ -1,5 +1,6 @@
-let directions = require('./input/day1')
-
+const fs = require('fs')
+const directions = fs.readFileSync('./input/day1.txt', 'utf8').trim().split(', ')
+ 
 let heading = 0
 let n = 0
 let e = 0
@@ -74,5 +75,6 @@ function step (direction) {
   advance(distance)
   console.log('at ', n, e)
 }
-directions.some(step)
+directions.forEach(step)
 console.log(Math.abs(n) + Math.abs(e))
+

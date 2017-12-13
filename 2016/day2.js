@@ -1,4 +1,5 @@
-let input = require('./input/day2')
+const fs = require('fs')
+const input = fs.readFileSync('./input/day2.txt', 'utf8').trim()
 var input2 = `ULL
 RRDDD
 LURDL
@@ -30,23 +31,23 @@ function lineToPosition (line) {
 function lettersToNumber (pos, move) {
   switch (move) {
     case 'U':
-      console.log('U')
+      //console.log('U')
       position = upFrom(pos)
       break;
     case 'D':
-      console.log('D')
+      //console.log('D')
       position = downFrom(pos)
       break;
     case 'R':
-      console.log('R')
+      //console.log('R')
       position = rightFrom(pos)
       break;
     case 'L':
-      console.log('L')
+      //console.log('L')
       position = leftFrom(pos)
       break;
   }
-  console.log('move ', move, 'to pos ', position, positionToNumber(position))
+  //console.log('move ', move, 'to pos ', position, positionToNumber(position))
   return position
 }
 function upFrom (position) {
