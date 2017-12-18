@@ -1,5 +1,6 @@
 const assert = require('assert')
-const input = require('./input/day5')
+const fs = require('fs')
+const input = fs.readFileSync('./input/day5.txt', 'utf8')
 
 const vowels = 'aeiou'.split('')
 const threeVowels = string => string.split('').filter(char => vowels.includes(char)).length > 2

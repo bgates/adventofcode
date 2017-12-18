@@ -1,4 +1,5 @@
-const input = require('./input/day1.js')
+const fs = require('fs')
+const input = fs.readFileSync(`./input/day1.txt`, 'utf8').trim()
 
 const floorFinder = input => input.split('').reduce((total, char) => total + (char === '(' ? 1 : -1), 0)
 console.log(floorFinder(input))

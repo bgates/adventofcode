@@ -1,4 +1,4 @@
-const measurements = `29x13x26
+29x13x26
 11x11x14
 27x2x5
 6x10x13
@@ -997,5 +997,4 @@ const measurements = `29x13x26
 27x26x11
 3x2x22
 14x3x5
-10x9x8`
-module.exports = measurements
+10x9x8

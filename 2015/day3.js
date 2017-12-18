@@ -1,4 +1,5 @@
-const input = require('./input/day3')
+const fs = require('fs')
+const input = fs.readFileSync('./input/day3.txt', 'utf8').trim()
 
 const recipients = input => {
   const directions = input.split('')

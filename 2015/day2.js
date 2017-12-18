@@ -1,4 +1,5 @@
-const myInput = require('./input/day2.js')
+const fs = require('fs')
+const myInput = fs.readFileSync('./input/day2.txt', 'utf8').trim()
 const myBoxes = myInput.split("\n")
 
 const useDimensions = (input, callback) => input.split("\n").reduce((total, box) => {

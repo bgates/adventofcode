@@ -1,4 +1,4 @@
-const strings = `zgsnvdmlfuplrubt
+zgsnvdmlfuplrubt
 vlhagaovgqjmgvwq
 ffumlmqwfcsyqpss
 zztdcqzqddaazdjp
@@ -997,5 +997,4 @@ hjsrvkdibdjarxxb
 sztzziuqroeidcus
 pxdfvcpvwaddrzwv
 phdqqxleqdjfgfbg
-cqfikbgxvjmnfncy`
-module.exports = strings
+cqfikbgxvjmnfncy
