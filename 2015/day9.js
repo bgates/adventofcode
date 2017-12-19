@@ -1,4 +1,5 @@
-const distances = require('./input/day9').split("\n")
+const fs = require('fs')
+const distances = fs.readFileSync('./input/day9.txt', 'utf8').trim().split("\n")
 
 let options = {}
 distances.forEach(distance => {

@@ -1,4 +1,4 @@
-const distances = `AlphaCentauri to Snowdin = 66
+AlphaCentauri to Snowdin = 66
 AlphaCentauri to Tambi = 28
 AlphaCentauri to Faerun = 60
 AlphaCentauri to Norrath = 34
@@ -25,5 +25,4 @@ Norrath to Tristram = 50
 Norrath to Arbre = 60
 Straylight to Tristram = 27
 Straylight to Arbre = 81
-Tristram to Arbre = 90`
-module.exports = distances
+Tristram to Arbre = 90
