@@ -1,4 +1,4 @@
-const inputs = `NOT dq -> dr
+NOT dq -> dr
 kg OR kf -> kh
 ep OR eo -> eq
 44430 -> b
@@ -336,5 +336,4 @@ hv OR hu -> hw
 NOT hj -> hk
 gj RSHIFT 3 -> gl
 fo RSHIFT 3 -> fq
-he RSHIFT 2 -> hf`
-module.exports = inputs
+he RSHIFT 2 -> hf

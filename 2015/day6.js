@@ -1,4 +1,5 @@
-const input = require('./input/day6')
+const fs = require('fs')
+const input = fs.readFileSync('./input/day6.txt', 'utf8').trim()
 
 const size = 1000
 const followDirections = (input, grid, instructions, reducer)=> {

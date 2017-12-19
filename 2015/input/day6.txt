@@ -1,4 +1,4 @@
-const instructions = `turn off 660,55 through 986,197
+turn off 660,55 through 986,197
 turn off 341,304 through 638,850
 turn off 199,133 through 461,193
 toggle 322,558 through 977,958
@@ -297,5 +297,4 @@ turn off 446,432 through 458,648
 turn on 715,871 through 722,890
 toggle 424,675 through 740,862
 toggle 580,592 through 671,900
-toggle 296,687 through 906,775`
-module.exports = instructions
+toggle 296,687 through 906,775
