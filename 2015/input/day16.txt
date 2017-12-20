@@ -1,4 +1,4 @@
-const sues = `Sue 1: goldfish: 9, cars: 0, samoyeds: 9
+Sue 1: goldfish: 9, cars: 0, samoyeds: 9
 Sue 2: perfumes: 5, trees: 8, goldfish: 8
 Sue 3: pomeranians: 2, akitas: 1, trees: 5
 Sue 4: goldfish: 10, akitas: 2, perfumes: 9
@@ -497,5 +497,4 @@ Sue 496: trees: 7, vizslas: 5, akitas: 6
 Sue 497: akitas: 8, trees: 2, perfumes: 6
 Sue 498: akitas: 1, trees: 1, samoyeds: 4
 Sue 499: cars: 0, akitas: 5, vizslas: 3
-Sue 500: cats: 2, goldfish: 9, children: 8`
-module.exports = sues
+Sue 500: cats: 2, goldfish: 9, children: 8

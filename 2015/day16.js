@@ -1,4 +1,5 @@
-const input = require('./input/day16').split("\n")
+const fs = require('fs')
+const input = fs.readFileSync('./input/day16.txt', 'utf8').trim().split("\n")
 
 const giver = {
   children: 3,
