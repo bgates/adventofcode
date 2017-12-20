@@ -1,4 +1,5 @@
-const happiness = require('./input/day13').split("\n")
+const fs = require('fs')
+const happiness = fs.readFileSync('./input/day13.txt', 'utf8').trim().split("\n")
 
 let options = {}
 happiness.forEach(preference => {

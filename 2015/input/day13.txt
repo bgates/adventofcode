@@ -1,4 +1,4 @@
-const happiness = `Alice would lose 2 happiness units by sitting next to Bob.
+Alice would lose 2 happiness units by sitting next to Bob.
 Alice would lose 62 happiness units by sitting next to Carol.
 Alice would gain 65 happiness units by sitting next to David.
 Alice would gain 21 happiness units by sitting next to Eric.
@@ -53,5 +53,4 @@ Mallory would gain 95 happiness units by sitting next to Carol.
 Mallory would gain 91 happiness units by sitting next to David.
 Mallory would lose 66 happiness units by sitting next to Eric.
 Mallory would lose 75 happiness units by sitting next to Frank.
-Mallory would lose 99 happiness units by sitting next to George.`
-module.exports = happiness
+Mallory would lose 99 happiness units by sitting next to George.
