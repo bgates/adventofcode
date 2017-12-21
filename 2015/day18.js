@@ -1,4 +1,5 @@
-let grid = require('./input/day18')
+const fs = require('fs')
+let grid = fs.readFileSync('./input/day18.txt', 'utf8').trim()
   .split("\n")
   .map(line => (
     line.split('')
